@@ -1,0 +1,2 @@
+# Alien_Invasion
+Creating a 2D game called "Alien Invasion"  written in Python 3.6.7 using the Pygame package. The aim of the game is a spaceship that scrolls left to right and fires missles to destroy a fleet of alien ships as they drop down the screen in levels that increase in speed and difficulty. The main focus of this project is to learn the foundations of Python game programming to be able to build future 2D games and contribute to the Pygame community in the future. 
