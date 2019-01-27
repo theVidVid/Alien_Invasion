@@ -3,9 +3,10 @@ import pygame
 class Ship():
     """Models a class representing a spaceship for the Alien Invader game."""
     
-    def __init__(self, screen):
+    def __init__(self, ai_settings, screen):
         """Initialize the ship and set its starting position."""
         self.screen = screen
+        self.ai_settings = ai_settings
         
         # Load the ship and get its rectangles.
         self.image = pygame.image.load('images/ship.bmp')
@@ -16,6 +17,9 @@ class Ship():
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
         
+        # Store a decimal value for the ship's center.
+        self.center = float(self.rect.centerx)
+        
         """
         Movement flag in its default state means the ship doesn't move either
         to the right or left side.
@@ -24,12 +28,15 @@ class Ship():
         self.moving_left = False
         
     def update(self):
-        """Update the ship's position based on the movement flag."""
-        # While KEYDOWN press event is held, self.moving_right is True
+        """Update the ship's position based on the movement flags."""
+        # Update the ship's center value, not the rect 
         if self.moving_right:
-            self.rect.centerx += 1
+            self.center += self.ai_settings.ship_speed_factor
         if self.moving_left:
-            self.rect.centerx -= 1
+            self.center -= self.ai_settings.ship_speed_factor
+            
+        # Update rect object from self.center.
+        self.rect.centerx = self.center
         
     def blitme(self):
         """Draw the ship at its current location."""

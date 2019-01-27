@@ -24,7 +24,7 @@ def check_events(ship):
                 # Move the ship to the left.
                 ship.moving_left = True
             
-        # KEYUP signifies the release of a key    
+        # KEYUP signifies the release of a pressed key    
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 # The ship stops moving to the right.

@@ -4,9 +4,7 @@ from settings import Settings
 from ship import Ship
 import game_functions as gf
 
-"""
-The pygame module contains the functionality needed to make a game.
-"""
+"""The pygame module contains the functionality needed to make a game."""
 
 def run_game():
     # Initializes pygame, settings, and screen object.
@@ -17,7 +15,7 @@ def run_game():
     pygame.display.set_caption("Alien Invasion")
     
     # Make ship
-    ship = Ship(screen)
+    ship = Ship(ai_settings, screen)
     
     # Start the main loop for the game.
     while True:
