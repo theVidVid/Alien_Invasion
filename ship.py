@@ -2,15 +2,16 @@ import pygame
 
 class Ship():
     """Models a class representing a spaceship for the Alien Invader game."""
-    
     def __init__(self, ai_settings, screen):
         """Initialize the ship and set its starting position."""
         self.screen = screen
         self.ai_settings = ai_settings
         
         # Load the ship and get its rectangles.
-        self.image = pygame.image.load('images/ship.bmp')
+        self.image = pygame.image.load('images/galaga_spaceship.bmp')
         self.rect = self.image.get_rect()
+        
+        # Load the rectangle representing the game screen.
         self.screen_rect = screen.get_rect()
         
         # Start each new ship at the bottom center of the screen.
