@@ -26,6 +26,6 @@ class Bullet(Sprite):
         # Update the decimal position of the bullet.
         self.y -= self.speed_factor
         # Update the rect position.
-        selkf.rect.y = self.y
+        self.rect.y = self.y
         
         
