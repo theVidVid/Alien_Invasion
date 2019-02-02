@@ -9,6 +9,7 @@ The sys module is used to exit the game when the quits.
 The pygame module contains the functionality needed to make a game.
 """
 
+
 def check_events(ai_settings, screen, ship, bullets):
     """Respond to keypresses and mouse events."""
     # Watch for keyboard and mouse events.
@@ -39,6 +40,7 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
         # Create a new bullet and add it to bullets group.
         new_bullet = Bullet(ai_settings, screen, ship)
         bullets.add(new_bullet)
+
         
 def check_keyup_events(event, ship):
     """Respond to key releases."""

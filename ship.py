@@ -1,5 +1,6 @@
 import pygame
 
+
 class Ship():
     """Models a class representing a spaceship for the Alien Invader game."""
     def __init__(self, ai_settings, screen):
