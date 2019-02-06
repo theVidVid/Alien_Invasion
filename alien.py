@@ -15,8 +15,8 @@ class Alien(Sprite):
         self.image = pygame.image.load('images/alien.png')
         self.rect = self.image.get_rect()
         
-        # Start each new alien near the top left of the screen.
         
+        """Start each new alien near the top left of the screen."""
         # Adding a space to the origin (0, 0) equal to the width of the ship.
         self.rect.x = self.rect.width
         # Adding a space to the origin (0, 0) equal to the height of the ship.
