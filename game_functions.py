@@ -135,7 +135,7 @@ def create_fleet(ai_settings, screen, ship, aliens):
 
 def check_fleet_edges(ai_settings, aliens):
     """Respond appropriately if any aliens have reached an edge."""
-    for alien in alien.sprites():
+    for alien in aliens.sprites():
         if alien.check_edges():
             change_fleet_direction(ai_settings, aliens)
             break
