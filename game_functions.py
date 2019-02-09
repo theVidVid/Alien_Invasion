@@ -66,10 +66,16 @@ def check_keyup_events(event, ship):
         ship.moving_left = False
             
 
-def update_bullets(bullets):
+def update_bullets(aliens, bullets):
     """Update position of bullets and get rid of old bullets"""
     # Update bullet positions.
     bullets.update()
+    
+    """
+    Check for any bullets that have hit aliens. 
+    If so, get rid of that bullet and the alien.
+    """
+    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
     
     # Get rid of bullets that have disappeared.
     for bullet in bullets.copy():
