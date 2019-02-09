@@ -1,4 +1,4 @@
-apt lisMon 04 Feb 2019 11:19:23 PM PST 
+Mon 04 Feb 2019 11:19:23 PM PST 
 Pygame crash course.
 
 import sys 
@@ -80,6 +80,6 @@ self.rect.height	# image rectangle's height
 self.rect.x		# image rectangle's x-axis
 self.rect.y		# image rectangle's y-axis
 
-
+sprite.groupcolllide()	# looks for collisions between members of two groups
     
         
