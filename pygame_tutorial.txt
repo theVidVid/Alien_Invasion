@@ -81,5 +81,5 @@ self.rect.x		# image rectangle's x-axis
 self.rect.y		# image rectangle's y-axis
 
 sprite.groupcolllide()	# looks for collisions between members of two groups
-    
+sprite.spritecollideany()	# takes two arguments, a sprite and a group    
         
