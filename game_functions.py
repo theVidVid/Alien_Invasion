@@ -19,11 +19,13 @@ def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens,
     """Respond to keypresses and mouse events."""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            save_high_score(stats, sb)
             sys.exit()
         
         # KEYDOWN signifies the pressing of a key    
         elif event.type == pygame.KEYDOWN:
-            check_keydown_events(event, ai_settings, screen, ship, bullets)
+            check_keydown_events(event, ai_settings, screen, stats, sb, 
+                ship, bullets)
             
         # KEYUP signifies the release of a pressed key    
         elif event.type == pygame.KEYUP:
@@ -65,7 +67,7 @@ def check_play_button(ai_settings, screen, stats, sb, play_button, ship,
         ship.center_ship()    
 
 
-def check_keydown_events(event, ai_settings, screen, ship, bullets):
+def check_keydown_events(event, ai_settings, screen, stats, sb, ship, bullets):
     """Respond to keypresses."""
     if event.key == pygame.K_RIGHT:
         # Move the ship to the right.
@@ -81,6 +83,7 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
         
     elif event.key == pygame.K_q:
         # Entering the letter 'q' quits the game.
+        save_high_score(stats, sb)
         sys.exit()
 
 
@@ -277,3 +280,14 @@ def check_high_score(stats, sb):
     if stats.score > stats.high_score:
         stats.high_score = stats.score
         sb.prep_high_score()
+
+
+def save_high_score(stats, sb):
+    """Saves the highest score to a .txt file."""
+    save_file = "GameSaveData/high_score.txt"
+    high_score = round(stats.high_score, -1)
+    saved_high_score = str(high_score)
+    with open(save_file, 'w') as f_obj:
+        f_obj.write(saved_high_score)
+    
+    
