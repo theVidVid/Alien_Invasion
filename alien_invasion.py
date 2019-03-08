@@ -40,6 +40,13 @@ def run_game():
     # Create a fleet of aliens.
     gf.create_fleet(ai_settings, screen, ship, aliens)
     
+    # Load sounds
+    bullet_sound = pygame.mixer.Sound("Sounds/laser_gun.wav")
+    ship_collision = pygame.mixer.Sound("Sounds/destroyed_ship.wav")
+    destroyed_alien = pygame.mixer.Sound("Sounds/explosion")
+    new_level = pygame.mixer.Sound("Sounds/new_level.wav")
+    game_over = pygame.mixer.Sound("Sounds/game_over.wav")
+    
     # Start the main loop for the game.
     while True:
         gf.check_events(ai_settings, screen, stats, sb, play_button, ship, 
