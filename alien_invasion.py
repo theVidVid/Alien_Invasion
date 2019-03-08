@@ -18,6 +18,9 @@ import game_functions as gf
 """The pygame module contains the functionality needed to make a game."""
 
 def run_game():
+    # Set custom mixer playback values 
+    pygame.mixer.pre_init(44100, -16, 2, 4096)
+    
     # Initializes pygame, settings, and screen object.
     pygame.init()
     ai_settings = Settings()
