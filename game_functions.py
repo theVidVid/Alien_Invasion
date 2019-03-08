@@ -131,6 +131,7 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship,
         for aliens in collisions.values():
             stats.score += ai_settings.alien_points * len(aliens)
             sb.prep_score()
+            ai_settings.destroyed_alien.play()
         check_high_score(stats, sb)
     
     if len(aliens) == 0:
