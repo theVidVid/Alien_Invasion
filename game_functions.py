@@ -243,11 +243,12 @@ def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
         bullets.empty()
         
         # Create a new fleet and center the ship.
+        ai_settings.level_refresh.play()
         create_fleet(ai_settings, screen, ship, aliens)
         ship.center_ship()
         
         # Pause.
-        sleep(0.50) 
+        sleep(1.5) 
     
     else:
         stats.game_active = False

@@ -23,6 +23,7 @@ class Settings():
         self.bullet_sound = pygame.mixer.Sound("Sounds/laser_2.wav")
         self.destroyed_alien = pygame.mixer.Sound("Sounds/explosion.wav")
         self.ship_collision = pygame.mixer.Sound("Sounds/destroyed_ship.wav")
+        self.level_refresh = pygame.mixer.Sound("Sounds/level_refresh.wav")
         self.new_level = pygame.mixer.Sound("Sounds/new_level.wav")
         self.game_over = pygame.mixer.Sound("Sounds/game_over.wav")
         
