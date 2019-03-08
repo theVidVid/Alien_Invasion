@@ -26,10 +26,9 @@ class Ship(Sprite):
         # Store a decimal value for the ship's center.
         self.center = float(self.rect.centerx)
         
-        """
-        Movement flag in its default state means the ship doesn't move either
-        to the right or left side.
-        """
+        # Movement flag in its default state means the ship doesn't move either
+        #   to the right or left side.
+
         self.moving_right = False
         self.moving_left = False
         

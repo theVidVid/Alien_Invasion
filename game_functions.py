@@ -93,6 +93,7 @@ def fire_bullet(ai_settings, screen, ship, bullets):
     if len(bullets) < ai_settings.bullets_allowed:
         new_bullet = Bullet(ai_settings, screen, ship)
         bullets.add(new_bullet)
+        ai_settings.bullet_sound.play()
 
         
 def check_keyup_events(event, ship):
