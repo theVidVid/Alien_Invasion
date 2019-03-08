@@ -251,6 +251,7 @@ def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
         sleep(1.5) 
     
     else:
+        ai_settings.game_over.play()
         stats.game_active = False
         pygame.mouse.set_visible(True)
 
