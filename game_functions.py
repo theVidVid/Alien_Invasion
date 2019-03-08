@@ -8,10 +8,8 @@ from bullet import Bullet
 
 from alien import Alien
 
-"""
-The sys module is used to exit the game when the quits.
-The pygame module contains the functionality needed to make a game.
-"""
+# The sys module is used to exit the game when the quits.
+# The pygame module contains the functionality needed to make a game.
 
 
 def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, 
@@ -135,6 +133,9 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship,
         check_high_score(stats, sb)
     
     if len(aliens) == 0:
+        # Load level cleared sound clip
+        ai_settings.new_level.play()        
+        
         # If the entire fleet is destroyed, start a new level.
         bullets.empty()
         ai_settings.increase_speed()
@@ -231,6 +232,9 @@ def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
         # Reduce the number of ships left
         stats.ships_left -= 1
         
+        # Load ship collision sound
+        ai_settings.ship_collision.play()
+        
         # Update scoreboard
         sb.prep_ships()
     
@@ -243,7 +247,7 @@ def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
         ship.center_ship()
         
         # Pause.
-        sleep(0.75) 
+        sleep(0.50) 
     
     else:
         stats.game_active = False
