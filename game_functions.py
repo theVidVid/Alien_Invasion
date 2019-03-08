@@ -40,6 +40,10 @@ def check_play_button(ai_settings, screen, stats, sb, play_button, ship,
     """Start a new game when the player clicks Play button."""
     button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
     if button_clicked and not stats.game_active:
+        # Load the game's song
+        ai_settings.game_song = pygame.mixer.music.load("GameSong/Grind.ogg")
+        ai_settings.game_song = pygame.mixer.music.play(-1)
+        
         # Reset the game settings.
         ai_settings.initialize_dynamic_settings()
         
@@ -235,6 +239,10 @@ def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
         # Load ship collision sound
         ai_settings.ship_collision.play()
         
+        # Stop game music
+        ai_settings.game_song = pygame.mixer.music.load("GameSong/Grind.ogg")
+        ai_settings.game_song = pygame.mixer.music.stop()
+        
         # Update scoreboard
         sb.prep_ships()
     
@@ -244,6 +252,7 @@ def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
         
         # Create a new fleet and center the ship.
         ai_settings.level_refresh.play()
+        ai_settings.game_song = pygame.mixer.music.play(-1)
         create_fleet(ai_settings, screen, ship, aliens)
         ship.center_ship()
         

@@ -19,18 +19,22 @@ class Settings():
         self.bullet_color = 178, 34, 34
         self.bullets_allowed = 3
         
+        # Game song settings
+        self.game_song = pygame.mixer.music.load("GameSong/Grind.ogg")
+        # ~ self.game_song = pygame.mixer.music.play(-1)
+        
         # Sound settings
         self.bullet_sound = pygame.mixer.Sound("Sounds/laser_2.wav")
-        self.bullet_sound.set_volume(0.02)
+        self.bullet_sound.set_volume(0.2)
         
         self.destroyed_alien = pygame.mixer.Sound("Sounds/explosion.wav")
-        self.destroyed_alien.set_volume(0.02)
+        self.destroyed_alien.set_volume(0.2)
         
         self.ship_collision = pygame.mixer.Sound("Sounds/destroyed_ship.wav")
-        self.ship_collision.set_volume(0.02)
+        self.ship_collision.set_volume(0.2)
         
         self.level_refresh = pygame.mixer.Sound("Sounds/level_refresh.wav")
-        self.level_refresh.set_volume(0.02)
+        self.level_refresh.set_volume(0.2)
         
         self.new_level = pygame.mixer.Sound("Sounds/new_level.wav")
         self.game_over = pygame.mixer.Sound("Sounds/game_over.wav")
