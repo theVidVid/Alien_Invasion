@@ -15,7 +15,7 @@ class Settings():
         
         # Bullet settings
         self.bullet_width = 3
-        self.bullet_height = 15
+        self.bullet_height = 20
         self.bullet_color = 178, 34, 34
         self.bullets_allowed = 3
         
@@ -25,13 +25,13 @@ class Settings():
         
         # Sound settings
         self.bullet_sound = pygame.mixer.Sound("Sounds/laser_2.wav")
-        self.bullet_sound.set_volume(0.1)
+        self.bullet_sound.set_volume(0.2)
         
         self.destroyed_alien = pygame.mixer.Sound("Sounds/explosion.wav")
-        self.destroyed_alien.set_volume(0.1)
+        self.destroyed_alien.set_volume(0.2)
         
         self.ship_collision = pygame.mixer.Sound("Sounds/destroyed_ship.wav")
-        self.ship_collision.set_volume(0.1)
+        self.ship_collision.set_volume(1)
         
         self.pause_in = pygame.mixer.Sound("Sounds/pause_in.wav")
         # ~ self.pause_in = pygame.set_volume(0.5)

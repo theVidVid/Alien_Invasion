@@ -1,4 +1,4 @@
-import pygame.font 
+import pygame.font
 
 from pygame.sprite import Group
 
@@ -15,7 +15,7 @@ class Scoreboard():
         self.stats = stats
         
         # Font settings for scoring information.
-        self.text_color = (30, 30, 30)
+        self.text_color = (255, 255, 255)
         self.font = pygame.font.Font("Fonts/PressStart2P.ttf", 28)
         
         # Prepare the initial score, level, and ship images.
@@ -50,9 +50,10 @@ class Scoreboard():
     
     def prep_level(self):
         """Turn the level into a rendered image."""
-        self.level_image = self.font.render("Lvl:" + str(self.stats.level), True,
-                self.text_color, self.ai_settings.bg_color)
-                
+        self.bg_color = (None) 
+        self.level_image = self.font.render("Lvl:" + str(self.stats.level), 
+                True, self.text_color, self.bg_color)
+        # ~ self.level_image.set_alpha(128)        
         # Position the level below the score.
         self.level_rect = self.level_image.get_rect()
         self.level_rect.right = self.score_rect.right
