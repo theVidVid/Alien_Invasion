@@ -13,7 +13,7 @@ class Ship(Sprite):
         self.ai_settings = ai_settings
         
         # Load the ship and get its rectangles.
-        self.image = pygame.image.load('images/galaga_spaceship.bmp')
+        self.image = pygame.image.load('Images/galaga_spaceship.bmp')
         self.rect = self.image.get_rect()
         
         # Load the rectangle representing the game screen.

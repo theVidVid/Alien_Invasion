@@ -18,6 +18,7 @@ def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens,
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             save_high_score(stats, sb)
+            pygame.quit()
             sys.exit()
         
         # KEYDOWN signifies the pressing of a key    
@@ -83,9 +84,18 @@ def check_keydown_events(event, ai_settings, screen, stats, sb, ship, bullets):
         # Fires a bullet.
         fire_bullet(ai_settings, screen, ship, bullets)
         
+    elif event.key == pygame.K_p:
+        # Entering the letter 'p' pauses the game.
+        pause_game(event, ai_settings, screen, stats, sb, ship, bullets)
+            
+    elif event.key == pygame.K_u:
+        # Entering the letter 'u' unpauses the game.
+        unpause_game(event, ai_settings, screen, stats, sb, ship, bullets)    
+        
     elif event.key == pygame.K_q:
         # Entering the letter 'q' quits the game.
         save_high_score(stats, sb)
+        pygame.quit()
         sys.exit()
 
 
@@ -97,6 +107,30 @@ def fire_bullet(ai_settings, screen, ship, bullets):
         bullets.add(new_bullet)
         ai_settings.bullet_sound.play()
 
+
+def pause_game(event, ai_settings, screen, stats, sb, ship, bullets):
+    """Puts the game in a pause state."""
+    if stats.game_active == True:       
+        # Load pause sound clip. 
+        ai_settings.pause_in.play()
+        # Pause the game's song
+        ai_settings.game_song = pygame.mixer.music.load("GameSong/Grind.ogg")
+        ai_settings.game_song = pygame.mixer.music.pause()
+        # Set game state to False.    
+        stats.game_active = False
+        
+
+def unpause_game(event, ai_settings, screen, stats, sb, ship, bullets):
+    """Returns the game back to previous state."""
+    if stats.game_active == False:
+        # Set game state to True    
+        stats.game_active = True 
+        # Load the unpause sound clip.
+        ai_settings.pause_out.play()
+        # Play the game's song
+        ai_settings.game_song = pygame.mixer.music.load("GameSong/Grind.ogg")
+        ai_settings.game_song = pygame.mixer.music.play(-1)    
+   
         
 def check_keyup_events(event, ship):
     """Respond to key releases."""
@@ -250,9 +284,13 @@ def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
         aliens.empty()
         bullets.empty()
         
-        # Create a new fleet and center the ship.
+        # Plays level refresh sound clip.
         ai_settings.level_refresh.play()
+        
+        # Plays the game song again from the beginning.
         ai_settings.game_song = pygame.mixer.music.play(-1)
+                
+        # Create a new fleet and center the ship.
         create_fleet(ai_settings, screen, ship, aliens)
         ship.center_ship()
         
@@ -260,6 +298,7 @@ def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
         sleep(1.5) 
     
     else:
+        ai_settings.game_song = pygame.mixer.music.stop()
         ai_settings.game_over.play()
         stats.game_active = False
         pygame.mouse.set_visible(True)
